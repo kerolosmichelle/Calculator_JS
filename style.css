@@ -1,125 +1,157 @@
-/* --- Calm Environment --- */
+/* Background Gradient Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Float Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Body Styling */
 body {
     margin: 0;
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    /* Soft, tranquil gradient */
-    background: radial-gradient(circle at top left, #1e293b, #0f172a);
-    font-family: 'Inter', sans-serif;
+    align-items: center;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #0f172a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     overflow: hidden;
 }
 
-/* --- Floating Calculator Card --- */
-.card-glass {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 40px;
-    padding: 35px;
+/* Container & Glow Effect */
+.calculator-container {
+    position: relative;
+    animation: float 5s ease-in-out infinite;
+}
+
+.glow-background {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(45deg, #6366f1, #a855f7);
+    filter: blur(40px);
+    opacity: 0.3;
+    border-radius: 50px;
+    z-index: -1;
+}
+
+/* Calculator Box */
+.calculator {
     width: 340px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    
-    /* Breathing/Floating Animation */
-    animation: float 6s ease-in-out infinite;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 45px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-}
-
-/* --- Header Styling --- */
-.calc-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 0 10px;
-}
-
-.calc-header h2 {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+/* Brand Name */
+.brand {
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }
 
-.status-dots span {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    margin-left: 5px;
+/* Display */
+.display-container {
+    background: rgba(0,0,0,0.2);
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* --- Display --- */
 #display {
     width: 100%;
-    background: transparent;
     border: none;
+    background: transparent;
     color: #fff;
-    font-size: 2.5rem;
-    font-weight: 200;
+    font-size: 48px;
     text-align: right;
-    margin-bottom: 30px;
+    font-weight: 200;
     outline: none;
-    letter-spacing: -1px;
+    box-sizing: border-box;
+    text-shadow: 0 0 15px rgba(255,255,255,0.3);
 }
 
-/* --- Buttons Grid --- */
+/* Buttons Grid */
 .buttons-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
-button {
+/* Button Animations */
+button:active { transform: scale(0.9) !important; }
+button:hover { filter: brightness(1.2); }
+
+/* Specific Buttons */
+.btn-clear {
+    grid-column: span 2;
     height: 65px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.2rem;
-    font-weight: 400;
+    border: none;
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s;
+    border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
-button:hover {
-    background: rgba(255, 255, 255, 0.12);
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.2);
+.btn-operator {
+    height: 65px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #818cf8;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-button:active {
-    transform: scale(0.95);
+.btn-number {
+    height: 65px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-/* --- Special Button Styles --- */
-.btn-op {
-    background: rgba(96, 165, 250, 0.1); /* Calm Blue tint */
-    color: #60a5fa;
-}
-
-.btn-util {
-    background: rgba(248, 113, 113, 0.1); /* Soft Red tint */
-    color: #f87171;
+.btn-zero {
+    grid-column: span 2;
 }
 
 .btn-equal {
     grid-row: span 2;
-    height: 100%;
-    background: linear-gradient(135deg, #6366f1, #a855f7);
-    color: white;
+    height: 145px;
+    border-radius: 20px;
     border: none;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
     box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-}
-
-.btn-equal:hover {
-    box-shadow: 0 15px 25px rgba(99, 102, 241, 0.4);
-    filter: brightness(1.1);
+    transition: all 0.3s;
 }

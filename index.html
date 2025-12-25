@@ -6,34 +6,38 @@
     <title>Calculator with Background Toggle</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body><div class="calculator-container">
     <h2>Simple Calculator</h2>
-    <div class="calculator">
-        <input type="text" id="display" disabled>
-        <br>
-        <button onclick="clearDisplay()">C</button>
-        <button onclick="appendToDisplay('7')">7</button>
-        <button onclick="appendToDisplay('8')">8</button>
-        <button onclick="appendToDisplay('9')">9</button>
-        <br>
-        <button onclick="appendToDisplay('3')">3</button>
-        <button onclick="appendToDisplay('4')">4</button>
-        <button onclick="appendToDisplay('5')">5</button>
-        <button onclick="appendToDisplay('6')">6</button>
-        <button onclick="appendToDisplay('2')">2</button>
-        <button onclick="appendToDisplay('1')">1</button>
-        <button onclick="appendToDisplay('0')">0</button>
-        <button onclick="appendToDisplay('.')">.</button>
-        <button onclick="appendToDisplay('+')">+</button>
-        <button onclick="appendToDisplay('-')">-</button>
-        <button onclick="appendToDisplay('/')">/</button>
-        <button onclick="appendToDisplay('*')">*</button>
-        <button onclick="calculateResult()">=</button>
-        <br>
-        <br>
+    <div class="calculator card-glass">
+        <input type="text" id="display" disabled placeholder="0">
+        
+        <div class="buttons-grid">
+            <button onclick="clearDisplay()" class="btn-clear">C</button>
+            <button onclick="appendToDisplay('/')" class="btn-op">/</button>
+            <button onclick="appendToDisplay('*')" class="btn-op">×</button>
+            <button onclick="appendToDisplay('-')" class="btn-op">-</button>
+
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')" class="btn-op">+</button>
+
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="calculateResult()" class="btn-equal">=</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('0')">0</button>
+        </div>
     </div>
-    <br><br>
-    <button onclick="toggleBackground()">Change Background</button>
+    
+    <button class="bg-toggle-btn" onclick="toggleBackground()">
+        <span>✨</span> Change Background
+    </button>
+</div>
 
     <script>
         function appendToDisplay(value) {
@@ -59,3 +63,4 @@
     </script>
 </body>
 </html>
+

@@ -6,16 +6,21 @@
     <title>Calculator with Background Toggle</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body><div class="calculator-container">
-    <h2>Simple Calculator</h2>
+<body>
+    <div class="calculator-container">
     <div class="calculator card-glass">
+        <header class="calc-header">
+            <h2>ZenCalc</h2>
+            <div class="status-dots"><span></span><span></span><span></span></div>
+        </header>
+        
         <input type="text" id="display" disabled placeholder="0">
         
         <div class="buttons-grid">
-            <button onclick="clearDisplay()" class="btn-clear">C</button>
-            <button onclick="appendToDisplay('/')" class="btn-op">/</button>
+            <button onclick="clearDisplay()" class="btn-util">C</button>
+            <button onclick="appendToDisplay('/')" class="btn-op">÷</button>
             <button onclick="appendToDisplay('*')" class="btn-op">×</button>
-            <button onclick="appendToDisplay('-')" class="btn-op">-</button>
+            <button onclick="appendToDisplay('-')" class="btn-op">−</button>
 
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
@@ -33,12 +38,7 @@
             <button onclick="appendToDisplay('0')">0</button>
         </div>
     </div>
-    
-    <button class="bg-toggle-btn" onclick="toggleBackground()">
-        <span>✨</span> Change Background
-    </button>
 </div>
-
     <script>
         function appendToDisplay(value) {
             document.getElementById('display').value += value;
@@ -63,4 +63,5 @@
     </script>
 </body>
 </html>
+
 
